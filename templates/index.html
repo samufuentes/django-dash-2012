@@ -1,1 +1,50 @@
-{{ var_ejemplo }}
+{% extends "base_collection.htm" %}
+
+{% block header %}
+  <h1>Collection</h1>
+{% endblock %}
+
+{% block content %}
+   <ul data-role="listview" data-filter=true>
+      <li> <a href="#">
+           <img src="images/cardimage.jpeg">
+           <h3>Name of the card</h3>
+           <p>Here a line with nice icons and the costs of the card</p>
+           <p>Here a brief description</p>
+           <span class="ui-li-count">3</span>
+         </a>
+      </li>
+      <li> <a href="#">
+           <img src="images/cardimage.jpeg">
+           <h3>Name of the card</h3>
+           <p>Here a line with nice icons and the costs of the card</p>
+           <p>Here a brief description</p>
+           <span class="ui-li-count">3</span>
+         </a>
+      </li>
+      <li> <a href="#">
+           <img src="images/cardimage.jpeg">
+           <h3>Name of the card</h3>
+           <p>Here a line with nice icons and the costs of the card</p>
+           <p>Here a brief description</p>
+           <span class="ui-li-count">3</span>
+         </a>
+      </li>
+      <li> <a href="#">
+           <img src="images/cardimage.jpeg">
+           <h3>Name of the card</h3>
+           <p>Here a line with nice icons and the costs of the card</p>
+           <p>Here a brief description</p>
+           <span class="ui-li-count">3</span>
+         </a>
+      </li>
+      <li> <a href="#">
+           <img src="images/cardimage.jpeg">
+           <h3>Name of the card</h3>
+           <p>Here a line with nice icons and the costs of the card</p>
+           <p>Here a brief description</p>
+           <span class="ui-li-count">3</span>
+         </a>
+      </li>
+   </ul>
+{% endblock %}
