@@ -141,8 +141,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'django-registration',
-    'django-facebook',
+    'registration',
+    'django_facebook',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -175,7 +175,10 @@ LOGGING = {
 }
 
 # Facebook app settings
-FACEBOOK_API_KEY = 402620839801923
-FACEBOOK_APP_ID = 402620839801923
-FACEBOOK_APP_SECRET = 6c4ed7052217a2e0926895736952160f
+FACEBOOK_API_KEY = '402620839801923'
+FACEBOOK_APP_ID = '402620839801923'
+FACEBOOK_APP_SECRET = '6c4ed7052217a2e0926895736952160f'
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
+# Registration app settings
+ACCOUNT_ACTIVATION_DAYS = 7

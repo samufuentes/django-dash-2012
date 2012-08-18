@@ -1,7 +1,9 @@
 Django==1.4.1
+PIL==1.1.7
 argparse==1.2.1
 beautifulsoup4==4.1.2
 dj-database-url==0.2.1
+django-extensions==0.9
 django-facebook==4.0.9
 django-hstore==1.1.1
 django-registration==0.8
