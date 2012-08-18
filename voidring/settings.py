@@ -1,8 +1,12 @@
 # Django settings for voidring project.
 
 import dj_database_url
+import os.path
+
 dj_database_url.urlparse.uses_netloc.append('hstore')
 dj_database_url.SCHEMES['hstore'] = 'django_hstore.postgresql_psycopg2'
+
+ROOT_DIR = os.path.dirname(__file__).replace('\\','/')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -105,6 +109,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    ROOT_DIR + '/../templates',
 )
 
 INSTALLED_APPS = (

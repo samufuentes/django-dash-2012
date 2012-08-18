@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'voidring.views.home', name='home'),
+    url(r'^$', 'voidring.views.home', name='home'),
     # url(r'^voidring/', include('voidring.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
