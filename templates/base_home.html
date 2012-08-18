@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+   <div data-role="page">
+      <div data-role="header" data-theme={{ theme|default:"a" }}>
+         {% block header %}
+            <h1>Home</h1>
+         {% endblock %}
+      </div>
+      <div data-role="content">
+         {% block content %}{% endblock %}
+      </div>
+   </div>
+{% endblock %}
