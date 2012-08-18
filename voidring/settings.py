@@ -15,7 +15,8 @@ ADMINS = (('Alejandro Castillo', 'castillochaves@gmail.com'),
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': dj_database_url.config(default='hstore://localhost')
+    'default': dj_database_url.config(
+                default='hstore://postgres:postgres@localhost:5432?voidring')
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -113,10 +114,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'card',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
