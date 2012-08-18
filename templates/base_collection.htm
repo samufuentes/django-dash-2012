@@ -4,9 +4,9 @@
    <div data-role="footer" data-position="fixed" data-id="toolbar">
       <div data-role="navbar">
          <ul>
-            <li><a href="#" class="ui-btn-active ui-state-persist">Collection</a></li>
-            <li><a href="#">Filters</a></li>
-            <li><a href="#">Statistics</a></li>
+            <li><a href="/cards/" class={% if selected == "cards" %}"ui-btn-active ui-state-persist"{% endif %}>Collection</a></li>
+            <li><a href="#" class={% if selected == "filters" %}"ui-btn-active ui-state-persist"{% endif %}>Filters</a></li>
+            <li><a href="/cards/statistics" class={% if selected == "statistics" %}"ui-btn-active ui-state-persist"{% endif %}>Statistics</a></li>
          </ul>
       </div>
    </div>
