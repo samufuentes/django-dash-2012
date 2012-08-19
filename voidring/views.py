@@ -33,7 +33,8 @@ def search_card(request):
             # Error if no results are found.
             cards = Card.freesearch(search_text)[:10]
             if cards != []:
-                return HttpResponseRedirect('/cards/'+str(card_id))
+                selected = "cards"
+                return HttpResponseRedirect('/cards/index.htm', {'cards': cards, 'selected': selected}, context_instance=RequestContext(request))
             form._errors['search_text'] = ErrorList([u'Cannot find any card with that name'])
     else:
         form = SearchCardForm()
