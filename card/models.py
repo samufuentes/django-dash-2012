@@ -27,28 +27,27 @@ class Card(models.Model):
         return "%s\n%s" % (card, prices)
 
     def set_data(self, value):
-        self._data = self.prepare(value)
+        self._data = self.prepare_hstore(value)
         self.last_data_update = datetime.now()
 
     def get_data(self):
         if datetime.now() - self.last_data_update > UPDATE_TIMES['data']:
             self._update_data()
-        print self._data
         if not self._data.get('link') and 'id' in self._data:
             self._data['link'] = get_link(self._data['id'])
             self.save()
-        return self.load(self._data)
+        return self.load_hstore(self._data)
 
     data = property(get_data, set_data)
 
     def set_prices(self, value):
-        self._prices = self.prepare(value)
+        self._prices = self.prepare_hstore(value)
         self.last_prices_update = datetime.now()
 
     def get_prices(self):
         if datetime.now() - self.last_prices_update > UPDATE_TIMES['prices']:
             self._update_prices()
-        return self.load(self._prices)
+        return self.load_hstore(self._prices)
 
     prices = property(get_prices, set_prices)
 
@@ -66,7 +65,7 @@ class Card(models.Model):
         return cls.objects.raw(card_query, (splitted, len(splitted)))
 
 
-    def load(self, value):
+    def load_hstore(self, value):
         for key in value:
             if '&' in value[key] and key != 'link':
                 value[key] = value[key].split('&')
@@ -74,7 +73,7 @@ class Card(models.Model):
                     value[key] = value[key][:-1]
         return value
 
-    def prepare(self, value):
+    def prepare_hstore(self, value):
         for key in value:
             if isinstance(value[key], list):
                 value[key] = '&'.join([smart_str(v) for v in value[key]])
