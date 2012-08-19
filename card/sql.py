@@ -4,7 +4,7 @@ select id from (
     select id, sum(match) as matches
     from (
         select id,
-            case when needle %% haystack OR needleb %% haystackb then 1
+            case when needle = haystack OR needleb = haystackb then 1
                 else 0
             end as match
         from (
