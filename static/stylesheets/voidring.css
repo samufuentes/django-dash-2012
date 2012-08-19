@@ -4,6 +4,10 @@
 
 div[data-role="fieldcontain"] { border-bottom: none; }
 
+.cards .ui-li:last-child {
+   border-bottom-width: 2px;
+}
+
 .card-image {
    width: 100%;
    height: auto;

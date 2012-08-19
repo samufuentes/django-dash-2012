@@ -1,7 +1,7 @@
 {% extends "base.htm" %}
 
-{% if viewing == 'collection' %}
-    {% block page_footer %}
+{% block page_footer %}
+    {% if viewing == 'collection' %}
        <div data-role="footer" data-position="fixed" data-id="toolbar">
           <div data-role="navbar">
              <ul>
@@ -11,5 +11,5 @@
              </ul>
           </div>
       </div>
-    {% endblock %}
-{% endif %}
+    {% endif %}
+{% endblock %}
