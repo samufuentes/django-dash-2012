@@ -33,6 +33,7 @@ class Card(models.Model):
     def get_data(self):
         if datetime.now() - self.last_data_update > UPDATE_TIMES['data']:
             self._update_data()
+        print self._data
         if not self._data.get('link') and 'id' in self._data:
             self._data['link'] = get_link(self._data['id'])
             self.save()
