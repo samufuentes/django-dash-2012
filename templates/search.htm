@@ -1,0 +1,16 @@
+{% extends "base.htm" %}
+
+{% block page_header %}<h1>Search</h1>{% endblock %}
+
+{% block page_content %}
+   <form action="/search/" method="post">
+      {{form.non_field_errors}}
+      <div data-role="fieldcontain">
+         {{form.search_text.errors}}
+         <label for="id_search_text">Name:</label>
+         {{form.search_text}}
+      </div>
+      <p><input type="submit" value="Search" /></p>
+   </form>
+
+{% endblock %}
