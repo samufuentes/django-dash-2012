@@ -1,13 +1,15 @@
 {% extends "base.htm" %}
 
-{% block page_footer %}
-   <div data-role="footer" data-position="fixed" data-id="toolbar">
-      <div data-role="navbar">
-         <ul>
-            <li><a href="/cards/" data-icon="grid" class={% if selected == "cards" %}"ui-btn-active ui-state-persist"{% endif %}>Collection</a></li>
-            <li><a href="#" data-icon="search" class={% if selected == "search" %}"ui-btn-active ui-state-persist"{% endif %}>search</a></li>
-            <li><a href="/cards/statistics" data-icon="custom-statistics" class={% if selected == "statistics" %}"ui-btn-active ui-state-persist"{% endif %}>Statistics</a></li>
-         </ul>
+{% if viewing == 'collection' %}
+    {% block page_footer %}
+       <div data-role="footer" data-position="fixed" data-id="toolbar">
+          <div data-role="navbar">
+             <ul>
+                <li><a href="/cards/" data-icon="grid" class={% if selected == 'cards' %}"ui-btn-active ui-state-persist"{% endif %}>Collection</a></li>
+                <li><a href="#" data-icon="search" class={% if selected == 'search' %}"ui-btn-active ui-state-persist"{% endif %}>search</a></li>
+                <li><a href="/cards/statistics" data-icon="custom-statistics" class={% if selected == 'statistics' %}"ui-btn-active ui-state-persist"{% endif %}>Statistics</a></li>
+             </ul>
+          </div>
       </div>
-   </div>
-{% endblock %}
+    {% endblock %}
+{% endif %}

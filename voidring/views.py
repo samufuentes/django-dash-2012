@@ -13,12 +13,14 @@ def home(request):
 
 def cards(request):
     cards = Card.objects.all()[:10]
-    selected = "cards"
-    return render_to_response('cards/index.htm', {'cards': cards, 'selected': selected}, context_instance=RequestContext(request))
+    selected = 'cards'
+    viewing = 'collection'
+    return render_to_response('cards/index.htm', {'cards': cards, 'viewing': viewing, 'selected': selected}, context_instance=RequestContext(request))
 
 def card_statistics(request):
-    selected = "statistics"
-    return render_to_response('cards/statistics.htm', {'selected': selected}, context_instance=RequestContext(request))
+    selected = 'statistics'
+    viewing = 'collection'
+    return render_to_response('cards/statistics.htm', {'viewing': viewing, 'selected': selected}, context_instance=RequestContext(request))
 
 def card_detail(request, id):
     card = Card.objects.get(id=id)
@@ -33,8 +35,8 @@ def search_card(request):
             # Error if no results are found.
             cards = Card.freesearch(search_text)[:10]
             if cards != []:
-                selected = "cards"
-                return HttpResponseRedirect('/cards/index.htm', {'cards': cards, 'selected': selected}, context_instance=RequestContext(request))
+                viewing = 'search'
+                return HttpResponseRedirect('/cards/index.htm', {'cards': cards, 'viewing': viewing}, context_instance=RequestContext(request))
             form._errors['search_text'] = ErrorList([u'Cannot find any card with that name'])
     else:
         form = SearchCardForm()

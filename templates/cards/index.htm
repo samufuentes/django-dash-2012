@@ -1,7 +1,11 @@
 {% extends "base_collection.htm" %}
 
 {% block page_header %}
-    <h1>Collection</h1>
+    {% if viewing == 'collection' %}
+        <h1>Collection</h1>
+    {% elif viewing == 'search' %}
+        <h1>Search</h1>
+    {% endif %}
 {% endblock %}
 
 {% block page_content %}
@@ -16,7 +20,9 @@
                 </a>
             </li>
         {% empty %}
-             <p>You have no cards yet, go and get some!</p>
+             {% if viewing == 'collection' %}
+                <p>You have no cards yet, go and get some!</p>
+             {% endif %}
         {% endfor %}
    </ul>
 {% endblock %}
