@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.utils.encoding import smart_str
 from datetime import datetime, timedelta
 from card.sql import CARD_SEARCH_QUERY as card_query
+from card.utils import get_link
 
 UPDATE_TIMES = {
     'prices': timedelta(hours=1),
@@ -32,6 +33,10 @@ class Card(models.Model):
     def get_data(self):
         if datetime.now() - self.last_data_update > UPDATE_TIMES['data']:
             self._update_data()
+        if ('link' not in self._data or
+                not self._data['link']) and 'id' in self._data:
+            self._data['link'] = get_link(self._data['id'])
+            self.save()
         return self.load(self._data)
 
     data = property(get_data, set_data)
@@ -63,7 +68,7 @@ class Card(models.Model):
 
     def load(self, value):
         for key in value:
-            if '&' in value[key]:
+            if '&' in value[key] and key != 'link':
                 value[key] = value[key].split('&')
         return value
 
