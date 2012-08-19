@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.forms.util import ErrorList
+from django.contrib.auth.decorators import login_required
 
 
 from card.models import Card
