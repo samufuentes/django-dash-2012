@@ -29,11 +29,12 @@ def search_card(request):
         form = SearchCardForm(request.POST)
         if form.is_valid():
             search_text = form.cleaned_data['search_text']
-            try:
-                card_id = Card.freesearch(search_text)[0].id
+            # Return the first 10 results (ordered) for the user to choose.
+            # Error if no results are found.
+            cards = Card.freesearch(search_text)[:10]
+            if cards != []:
                 return HttpResponseRedirect('/cards/'+str(card_id))
-            except IndexError:
-                form._errors['search_text'] = ErrorList([u'Cannot find any card with that name'])
+            form._errors['search_text'] = ErrorList([u'Cannot find any card with that name'])
     else:
         form = SearchCardForm()
 
