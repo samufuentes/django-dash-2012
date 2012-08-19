@@ -70,12 +70,16 @@ class Card(models.Model):
         for key in value:
             if '&' in value[key] and key != 'link':
                 value[key] = value[key].split('&')
+                while value[key][-1] == '':
+                    value[key] = value[key][:-1]
         return value
 
     def prepare(self, value):
         for key in value:
             if isinstance(value[key], list):
-                value[key] = '&'.join([smart_str(v) for v in value[key]] + [''])
+                value[key] = '&'.join([smart_str(v) for v in value[key]])
+                if '&' not in value[key]:
+                    value[key] = value[key] + '&'
             value[key] = smart_str(value[key])
         return value
 

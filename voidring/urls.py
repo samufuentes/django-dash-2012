@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'voidring.views.home', name='home'),
     url(r'^cards/$', 'voidring.views.cards'),
+    url(r'^cards/(\d*)/$', 'voidring.views.card_detail'),
     url(r'^cards/statistics/', 'voidring.views.card_statistics'),
     # url(r'^voidring/', include('voidring.foo.urls')),
 
