@@ -33,4 +33,4 @@ def search_card(request):
     else:
         form = SearchCardForm()
 
-    return render(request, 'templates/search.html', {'form': form,})
+    return render(request, 'search.htm', {'form': form,}, context_instance=RequestContext(request))
