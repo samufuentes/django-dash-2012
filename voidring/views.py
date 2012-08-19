@@ -29,7 +29,7 @@ def search_card(request):
         if form.is_valid():
             search_text = form.cleaned_data['search_text']
             card_id = Card.freesearch(search_text)[0].id
-            return HttpResponseRedirect('/cards/'+card_id)
+            return HttpResponseRedirect('/cards/'+str(card_id))
     else:
         form = SearchCardForm()
 

@@ -3,7 +3,7 @@
 {% block page_header %}<h1>Search</h1>{% endblock %}
 
 {% block page_content %}
-   <form action="/search/" method="post">
+   <form action="/search/" method="post">{% csrf_token %}
       {{form.non_field_errors}}
       <div data-role="fieldcontain">
          {{form.search_text.errors}}

@@ -1,4 +1,4 @@
 from django import forms
 
 class SearchCardForm(forms.Form):
-    searchtext = forms.CharField()
+    search_text = forms.CharField()
