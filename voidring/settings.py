@@ -3,6 +3,7 @@
 import dj_database_url
 import os.path
 
+from django.core.urlresolvers import reverse_lazy
 from registration_defaults.settings import *
 
 dj_database_url.urlparse.uses_netloc.append('hstore')
@@ -189,3 +190,6 @@ AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 # Registration app settings
 ACCOUNT_ACTIVATION_DAYS = 7
+
+# Login
+LOGIN_REDIRECT_URL = reverse_lazy('home')
