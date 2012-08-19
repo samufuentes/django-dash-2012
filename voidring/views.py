@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.forms.util import ErrorList
@@ -36,7 +37,7 @@ def search_card(request):
             cards = Card.freesearch(search_text)[:10]
             if cards != []:
                 viewing = 'search'
-                return HttpResponseRedirect('/cards/index.htm', {'cards': cards, 'viewing': viewing}, context_instance=RequestContext(request))
+                return render_to_response('cards/index.htm', {'cards': cards, 'viewing': viewing}, context_instance=RequestContext(request))
             form._errors['search_text'] = ErrorList([u'Cannot find any card with that name'])
     else:
         form = SearchCardForm()
