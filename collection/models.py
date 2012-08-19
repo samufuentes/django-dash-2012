@@ -5,6 +5,7 @@ from card.models import Card
 
 # Create your models here.
 class Collection(models.Model):
+    name = models.CharField(max_length=255)
     user = models.ForeignKey(User)
     cards = models.ManyToManyField(Card, 
             related_name='card+', through='CollectionCards')
@@ -19,9 +20,9 @@ class Collection(models.Model):
         return self.collectioncards_set.filter(trade_count__gt=0)
 
     def _mod_card(self, id, n, op, l):
-        card = Card.objects.get(id=id)
+        #card = Card.objects.get(id=id)
         ccard, created = CollectionCards.objects.get_or_create(
-                                        collection=self, card=card)
+                                        collection=self, card__id=id)
         if op == 'set':
             setattr(ccard, l, n)
         else:

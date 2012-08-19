@@ -43,3 +43,35 @@ def search_card(request):
         form = SearchCardForm()
 
     return render(request, 'search.htm', {'form': form,}, context_instance=RequestContext(request))
+
+@login_required
+def create_collection(request):
+    if request.method == 'POST':
+        form = CollectionForm(request.POST)
+        if form.isvalid():
+            name = form.cleaned_data['search_text']
+            collection, created = Collection.objects.get_or_create(
+                            user__id=request.user_id, name=name)
+            selected = 'cards'
+            viewing = 'collection'
+            if created:
+                collection.save()
+            for card in collection.card_list():
+                card.card.n = card.card_count()
+            cards = [c.card for c in collection.card_list()]
+            return render_to_response('cards/index.htm', {'cards': cards, 'viewing': viewing, 'selected': selected}, context_instance=RequestContext(request))
+    else:
+        form = CollectionForm()
+    return render(request, 'collection.htm', {'form': form}, context_instance=RequestContext(request))
+
+@login_required
+def add_card(request, collection, card):
+    if request.method == 'POST':
+        form = AddCardForm(request.POST)
+        if form.isvalid():
+            n = form.cleaned_data['n']
+            collection = Collection.objects.get(id=collection)
+            collection.add_card(card, n)
+    else:
+        form = CollectionForm()
+

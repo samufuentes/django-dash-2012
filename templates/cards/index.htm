@@ -15,8 +15,8 @@
                 <a href="/cards/{{card.id}}">
                     <img src="{{card.data.link}}"/>
                     <h3>{{card.data.name}}</h3>
-                    <p>Here a brief description of the card</p>
-                    <span class="ui-li-count">3</span>
+                    <p>{% for key in card.data.keywords %}{{key|safe}} {% endfor %}</p>
+                    <span class="ui-li-count">{{card.n|default:0}}</span>
                 </a>
             </li>
         {% empty %}
