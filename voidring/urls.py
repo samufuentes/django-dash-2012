@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^cards/$', 'voidring.views.cards'),
     url(r'^cards/(\d*)/$', 'voidring.views.card_detail'),
     url(r'^cards/statistics/', 'voidring.views.card_statistics'),
+    url(r'^search/$', 'voidring.views.search_card'),
     # url(r'^voidring/', include('voidring.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
