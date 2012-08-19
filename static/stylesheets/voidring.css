@@ -2,6 +2,8 @@
 	background-image: url("/static/stylesheets/icon-stats-white.png");
 }
 
+div[data-role="fieldcontain"] { border-bottom: none; }
+
 .card-image {
    width: 100%;
    height: auto;
