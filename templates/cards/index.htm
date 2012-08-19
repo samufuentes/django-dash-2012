@@ -1,50 +1,22 @@
 {% extends "base_collection.htm" %}
 
-{% block page_header_title %}
-  <h1>Collection</h1>
+{% block page_header %}
+    <h1>Collection</h1>
 {% endblock %}
 
 {% block page_content %}
-   <ul data-role="listview" data-filter=true>
-      <li> <a href="#">
-           <img src="{{ STATIC_URL }}images/cardimage.jpeg">
-           <h3>Name of the card</h3>
-           <p>Here a line with nice icons and the costs of the card</p>
-           <p>Here a brief description</p>
-           <span class="ui-li-count">3</span>
-         </a>
-      </li>
-      <li> <a href="#">
-           <img src="images/cardimage.jpeg">
-           <h3>Name of the card</h3>
-           <p>Here a line with nice icons and the costs of the card</p>
-           <p>Here a brief description</p>
-           <span class="ui-li-count">3</span>
-         </a>
-      </li>
-      <li> <a href="#">
-           <img src="images/cardimage.jpeg">
-           <h3>Name of the card</h3>
-           <p>Here a line with nice icons and the costs of the card</p>
-           <p>Here a brief description</p>
-           <span class="ui-li-count">3</span>
-         </a>
-      </li>
-      <li> <a href="#">
-           <img src="images/cardimage.jpeg">
-           <h3>Name of the card</h3>
-           <p>Here a line with nice icons and the costs of the card</p>
-           <p>Here a brief description</p>
-           <span class="ui-li-count">3</span>
-         </a>
-      </li>
-      <li> <a href="#">
-           <img src="images/cardimage.jpeg">
-           <h3>Name of the card</h3>
-           <p>Here a line with nice icons and the costs of the card</p>
-           <p>Here a brief description</p>
-           <span class="ui-li-count">3</span>
-         </a>
-      </li>
+    <ul data-role="listview" data-filter=true>
+        {% for card in cards %}
+            <li>
+                <a href="/cards/{{card.id}}">
+                    <img src="{{card.data.link}}">
+                    <h3>{{card.data.name}}</h3>
+                    <p>Here a brief description of the card</p>
+                    <span class="ui-li-count">3</span>
+                </a>
+            </li>
+        {% empty %}
+             <p>You have no cards yet, go and get some!</p>
+        {% endfor %}
    </ul>
 {% endblock %}
