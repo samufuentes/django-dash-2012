@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.forms.util import ErrorList
 
 
 from card.models import Card
@@ -28,8 +29,11 @@ def search_card(request):
         form = SearchCardForm(request.POST)
         if form.is_valid():
             search_text = form.cleaned_data['search_text']
-            card_id = Card.freesearch(search_text)[0].id
-            return HttpResponseRedirect('/cards/'+str(card_id))
+            try:
+                card_id = Card.freesearch(search_text)[0].id
+                return HttpResponseRedirect('/cards/'+str(card_id))
+            except IndexError:
+                form._errors['search_text'] = ErrorList([u'Cannot find any card with that name'])
     else:
         form = SearchCardForm()
 
