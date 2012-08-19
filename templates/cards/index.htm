@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block page_content %}
-    <ul data-role="listview" data-filter=true>
+    <ul class="cards" data-role="listview" data-filter=true>
         {% for card in cards %}
             <li>
                 <a href="/cards/{{card.id}}">
