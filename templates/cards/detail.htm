@@ -1,10 +1,24 @@
-{% extends "base_collection.htm" %}
+{% extends "base.htm" %}
 
-{% block content %}
+{% block page_jqm_data_attributes %}data-add-back-btn="true" data-back-btn-text="Back" data-back-btn-theme="b"{% endblock %}
+
+{% block page_header %}
+    <h1>{{data.name}}</h1>
+{% endblock %}
+
+{% block page_content %}
+    <img src='{{data.link}}' width="90%" height="auto">
     {% for key, value in data.items %}
-        {% if key != "link" and key != "id" %}
-            <b>{{key}}</b>: {{value}}</br>
-        {% endif %}
+        <ul>
+            {% if key == "legality" or key == "keywords" or key == "other_sets" %}
+                <li>
+                    <strong>{{key}}: </strong>{{value|join:', '}}
+                </li>
+            {% elif key != "link" and key != "id" %}
+                <li>
+                    <strong>{{key}}: </strong>{{value|safe}}
+                </li>
+            {% endif %}
+        </ul>
     {% endfor %}
-    <img src='{{data.link}}'>
 {% endblock %}
