@@ -1,0 +1,10 @@
+{% extends "base_collection.htm" %}
+
+{% block content %}
+    {% for key, value in data.items %}
+        {% if key != "link" and key != "id" %}
+            <b>{{key}}</b>: {{value}}</br>
+        {% endif %}
+    {% endfor %}
+    <img src='{{data.link}}'>
+{% endblock %}
