@@ -3,6 +3,8 @@
 import dj_database_url
 import os.path
 
+from registration_defaults.settings import *
+
 dj_database_url.urlparse.uses_netloc.append('hstore')
 dj_database_url.SCHEMES['hstore'] = 'django_hstore.postgresql_psycopg2'
 
@@ -130,6 +132,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 INSTALLED_APPS = (
+    'registration_defaults',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
