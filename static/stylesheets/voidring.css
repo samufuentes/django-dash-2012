@@ -1,3 +1,12 @@
 .ui-icon-custom-statistics {
 	background-image: url("/static/stylesheets/icon-stats-white.png");
 }
+
+.card-image {
+   width: 100%;
+   height: auto;
+}
+
+.card-info {
+   list-style: none;
+}

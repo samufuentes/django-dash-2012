@@ -12,8 +12,8 @@ def cards(request):
 
 def card_statistics(request):
     selected = "statistics"
-    return render_to_response('cards/statistics.htm', {'selected': selected})
+    return render_to_response('cards/statistics.htm', {'selected': selected}, context_instance=RequestContext(request))
 
 def card_detail(request, id):
     card = Card.objects.get(id=id)
-    return render_to_response('cards/detail.htm', {'data': card.data})
+    return render_to_response('cards/detail.htm', {'data': card.data}, context_instance=RequestContext(request))

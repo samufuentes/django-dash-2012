@@ -7,18 +7,19 @@
 {% endblock %}
 
 {% block page_content %}
-    <img src='{{data.link}}' width="90%" height="auto">
-    {% for key, value in data.items %}
-        <ul>
-            {% if key == "legality" or key == "keywords" or key == "other_sets" %}
+    <img class="card-image" src='{{data.link}}'/>
+    <ul class="card-info">
+        {% for key, value in data.items %}
+            {% if key != "link" and key != "id" %}
                 <li>
-                    <strong>{{key}}: </strong>{{value|join:', '}}
-                </li>
-            {% elif key != "link" and key != "id" %}
-                <li>
-                    <strong>{{key}}: </strong>{{value|safe}}
+                    <strong>{{key|capfirst}}: </strong>
+                    {% if key == "legality" or key == "keywords" or key == "other_sets" %}
+                        {{value|join:', '}}
+                    {% else %}
+                        {{value|safe}}
+                    {% endif %}
                 </li>
             {% endif %}
-        </ul>
-    {% endfor %}
+        {% endfor %}
+    </ul>
 {% endblock %}
