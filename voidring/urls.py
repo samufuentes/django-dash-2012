@@ -1,8 +1,14 @@
 from django.conf.urls import patterns, include, url
+from card.api import CardResource
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
+# API resources
+card_resource = CardResource()
+print card_resource.urls
+print "lll"
 
 urlpatterns = patterns('',
     # Examples:
@@ -25,4 +31,5 @@ urlpatterns = patterns('',
     #(r'^accounts/', include('django_facebook.auth_urls')), #Don't add this line if you use django registration or userena for registration and auth.
     # Django registration
     (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^api/', include(card_resource.urls)),
 )
