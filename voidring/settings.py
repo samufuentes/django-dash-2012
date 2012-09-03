@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'registration',
     'django_facebook',
+    'tastypie',
 )
 
 # A sample logging configuration. The only tangible logging
